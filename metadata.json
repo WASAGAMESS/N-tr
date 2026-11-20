@@ -1,0 +1,8 @@
+{
+  "name": "nütr PRO",
+  "description": "Ecosistema digital y logístico de alimentación personalizada de fricción cero para ejecutivos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

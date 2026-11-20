@@ -1,0 +1,396 @@
+import {
+  BioProfile,
+  ChatMessage,
+  DailyCheckIn,
+  DeliveryPreferences,
+  MealItem,
+  MealPlanDay,
+  Profile,
+} from '../types/nutr';
+
+export const IMG_SALMON = '/src/assets/images/meal_salmon_quinoa_1795215195927.jpg';
+export const IMG_CHICKEN = '/src/assets/images/meal_chicken_greens_1795215196917.jpg';
+export const IMG_CHIA = '/src/assets/images/meal_chia_matcha_1795215196295.jpg';
+export const IMG_NUTRITIONIST = '/src/assets/images/avatar_nutritionist_1795215196770.jpg';
+export const IMG_EXECUTIVE = '/src/assets/images/avatar_executive_1795215196996.jpg';
+
+export const INITIAL_PROFILE: Profile = {
+  id: 'usr_exec_01',
+  fullName: 'Alejandro Domínguez',
+  roleTitle: 'VP de Estrategia',
+  email: 'alejandro.dominguez@grupo-altus.mx',
+  avatarUrl: IMG_EXECUTIVE,
+  tier: 'pro',
+  onboardingCompleted: false,
+};
+
+export const INITIAL_BIO_PROFILE: BioProfile = {
+  profileId: 'usr_exec_01',
+  age: 37,
+  weightKg: 78,
+  heightCm: 179,
+  sex: 'male',
+  goal: 'cognitive_performance',
+  stressLevel: 'executive_high',
+  sleepHours: '6-7h',
+  dietaryStyle: 'mediterranean',
+  allergies: ['Lácteos enteros'],
+  weeklyWorkouts: 4,
+};
+
+export const INITIAL_DELIVERY: DeliveryPreferences = {
+  addressLine: 'Paseo de la Reforma 412, Piso 18',
+  neighborhood: 'Cuauhtémoc',
+  city: 'Ciudad de México',
+  windowSlot: '07:30 - 08:00',
+  cadence: 'Lun / Mié / Vie (21 comidas)',
+  refrigerationNotes: 'Entregar en recepción ejecutiva; solicitar resguardo en cámara fría (4 °C).',
+  thermalBoxEnabled: true,
+};
+
+export const MEAL_CATALOG: MealItem[] = [
+  // DESAYUNOS
+  {
+    id: 'des_chia_cacao',
+    slot: 'desayuno',
+    name: 'Bowl de Chía, Cacao Criollo y Yogurt Griego',
+    subtitle: 'Energía estable sin pico glucémico matutino',
+    timeLabel: '08:15',
+    calories: 470,
+    protein: 34,
+    carbs: 44,
+    fats: 17,
+    prepMinutes: 7,
+    prepMethod: 'Ensamblado en frío',
+    imageUrl: IMG_CHIA,
+    ingredients: [
+      '200 g de yogurt griego 0% deslactosado',
+      '25 g de semillas de chía hidratadas',
+      '15 g de proteína aislada de vainilla o cacao puro',
+      '60 g de zarzamoras frescas y 15 g de almendra tostada',
+      '1 cdita de nibs de cacao criollo',
+    ],
+    quickSteps: [
+      'Mezcla el yogurt griego con la proteína aislada en un bowl hasta lograr textura sedosa (2 min).',
+      'Incorpora la chía previamente hidratada en bebida de almendra sin azúcar.',
+      'Corona con zarzamoras frescas, láminas de almendra tostada y nibs de cacao.',
+    ],
+    proLogisticsNote: 'Sellado hermético en envase de vidrio templado · Mantener a 4 °C · Listo para consumir.',
+    tags: ['Bajo índice glucémico', 'Omega-3 vegetal', 'Cero azúcar añadido'],
+  },
+  {
+    id: 'des_huevos_espinaca',
+    slot: 'desayuno',
+    name: 'Omelette de Claras, Aguacate y Pan Masa Madre',
+    subtitle: 'Colina y aminoácidos esenciales para juntas tempranas',
+    timeLabel: '08:15',
+    calories: 510,
+    protein: 39,
+    carbs: 38,
+    fats: 22,
+    prepMinutes: 9,
+    prepMethod: 'Sartén antiadherente',
+    imageUrl: IMG_CHICKEN,
+    ingredients: [
+      '2 huevos completos + 150 ml de claras líquidas',
+      '1 taza de espinaca baby y jitomate cherry',
+      '1 rebanada de pan de masa madre integral tostado',
+      '70 g de aguacate Hass en láminas y sal de mar',
+    ],
+    quickSteps: [
+      'Saltea la espinaca con jitomate cherry en 1 cdita de aceite de oliva por 2 minutos.',
+      'Vierte los huevos batidos con claras y cocina a fuego medio-bajo por 4 minutos.',
+      'Sirve sobre el pan de masa madre tostado y termina con aguacate fresco.',
+    ],
+    proLogisticsNote: 'Empaque bicompartimento · Calentar tortilla proteica 45 seg antes de agregar aguacate.',
+    tags: ['Alta saciedad', 'Colina cognitiva', 'Digestión ligera'],
+  },
+  {
+    id: 'des_matcha_avena',
+    slot: 'desayuno',
+    name: 'Overnight Oats de Matcha Ceremonial y Almendra',
+    subtitle: 'L-teanina natural con liberación sostenida de glucosa',
+    timeLabel: '08:15',
+    calories: 455,
+    protein: 31,
+    carbs: 50,
+    fats: 14,
+    prepMinutes: 8,
+    prepMethod: 'Mezcla rápida sin cocción',
+    imageUrl: IMG_CHIA,
+    ingredients: [
+      '50 g de avena orgánica hojuela gruesa',
+      '25 g de aislado de proteína neutra',
+      '2 g de té matcha ceremonial grado A',
+      '180 ml de bebida de almendra sin endulzar',
+      '15 g de crema de almendra natural',
+    ],
+    quickSteps: [
+      'Disuelve el matcha y la proteína en la bebida de almendra usando batidor manual (2 min).',
+      'Integra la avena con agua caliente 4 min para ablandar o deja reposar desde la noche anterior.',
+      'Finaliza con crema de almendra natural y semillas de cáñamo.',
+    ],
+    proLogisticsNote: 'Vaso térmico sellado · Listo en frío o tibio (30 seg microondas).',
+    tags: ['Enfoque L-teanina', 'Fibra prebiótica', 'Sin lactosa'],
+  },
+
+  // COMIDAS
+  {
+    id: 'com_salmon_quinoa',
+    slot: 'comida',
+    name: 'Salmón Salvaje Sellado, Quinoa Tricolor y Bimi',
+    subtitle: 'EPA/DHA antiinflamatorio para rendimiento sostenido de tarde',
+    timeLabel: '14:00',
+    calories: 690,
+    protein: 48,
+    carbs: 54,
+    fats: 30,
+    prepMinutes: 11,
+    prepMethod: 'Sartén de hierro / Airfryer',
+    imageUrl: IMG_SALMON,
+    ingredients: [
+      '180 g de lomo de salmón salvaje con piel crujiente',
+      '140 g de quinoa tricolor cocida al vapor',
+      '120 g de bimi o broccolini asado con limón amarillo',
+      '60 g de aguacate fresco y microgreens de cilantro',
+    ],
+    quickSteps: [
+      'Sazona el salmón con sal en escamas y pimienta; sella 4 min por lado en sartén caliente (o 9 min en airfryer a 190 °C).',
+      'Saltea el bimi en los últimos 3 minutos con unas gotas de aceite de oliva y ralladura de limón.',
+      'Monta sobre la quinoa tibia y añade las láminas de aguacate.',
+    ],
+    proLogisticsNote: 'Contenedor compostable sellado al vacío · Calentar proteína y grano 90 seg; aguacate separado.',
+    tags: ['Rico en Omega-3', 'Antiinflamatorio', 'Sin pesadez postprandial'],
+  },
+  {
+    id: 'com_pollo_esparragos',
+    slot: 'comida',
+    name: 'Pechuga Orgánica a las Hierbas, Arroz Salvaje y Espárragos',
+    subtitle: 'Proteína magra de rápida absorción y fibra mineral',
+    timeLabel: '14:00',
+    calories: 640,
+    protein: 52,
+    carbs: 58,
+    fats: 21,
+    prepMinutes: 12,
+    prepMethod: 'Plancha rápida',
+    imageUrl: IMG_CHICKEN,
+    ingredients: [
+      '190 g de pechuga de pollo libre pastoreo en medallones',
+      '150 g de arroz salvaje y negro cocido',
+      '130 g de espárragos verdes tiernos',
+      '1 cda de aceite de oliva extra virgen prensado en frío con tomillo',
+    ],
+    quickSteps: [
+      'Corta la pechuga en filetes delgados para reducir tiempo de cocción; sella 4 min por lado con tomillo.',
+      'Asa los espárragos en la misma plancha por 3 minutos hasta lograr un ligero dorado.',
+      'Sirve junto al arroz salvaje y rocía con aceite de oliva crudo al final.',
+    ],
+    proLogisticsNote: 'Cocción sous-vide previa en cocina central · Regenerar 2 min para conservar jugosidad.',
+    tags: ['Alta densidad proteica', 'Bajo sodio', 'Energía limpia'],
+  },
+  {
+    id: 'com_atun_edamame',
+    slot: 'comida',
+    name: 'Bowl de Atún Aleta Azul Sellado, Edamame y Camote',
+    subtitle: 'Recuperación muscular y micronutrientes tiroideos',
+    timeLabel: '14:00',
+    calories: 660,
+    protein: 50,
+    carbs: 62,
+    fats: 22,
+    prepMinutes: 10,
+    prepMethod: 'Sellado rápido 90 seg',
+    imageUrl: IMG_SALMON,
+    ingredients: [
+      '180 g de medallón de atún sellado en ajonjolí negro',
+      '130 g de cubos de camote rostizado',
+      '80 g de edamame pelado y pepino persa',
+      'Aderezo ligero de yuzu, jengibre y tamari sin gluten',
+    ],
+    quickSteps: [
+      'Cubre el atún con ajonjolí negro y séllalo 45 segundos por lado en sartén muy caliente.',
+      'Rebana en láminas gruesas y coloca sobre el camote tibio y el edamame.',
+      'Termina con aderezo de yuzu y jengibre rallado.',
+    ],
+    proLogisticsNote: 'Cadena de frío estricta 2–4 °C · Consumir frío o templar únicamente el camote.',
+    tags: ['Selenio y yodo', 'Preparación 10 min', 'Sin gluten'],
+  },
+
+  // CENAS
+  {
+    id: 'cen_pollo_calabaza',
+    slot: 'cena',
+    name: 'Pollo Rostizado al Romero, Espárragos y Crema de Coliflor',
+    subtitle: 'Cena ligera pro-sueño rica en triptófano y magnesio',
+    timeLabel: '20:30',
+    calories: 560,
+    protein: 46,
+    carbs: 34,
+    fats: 25,
+    prepMinutes: 10,
+    prepMethod: 'Sartén + puré express',
+    imageUrl: IMG_CHICKEN,
+    ingredients: [
+      '175 g de pechuga marinada al romero y limón',
+      '160 g de puré sedoso de coliflor con aceite de oliva',
+      '110 g de espárragos al vapor ligero',
+      '10 g de semillas de calabaza tostadas',
+    ],
+    quickSteps: [
+      'Calienta el puré de coliflor con un toque de nuez moscada durante 3 minutos.',
+      'Dora el pollo en tiras finas por 6 minutos hasta sellar jugos.',
+      'Acompaña con espárragos crujientes y semillas de calabaza.',
+    ],
+    proLogisticsNote: 'Diseñado para digestión nocturna rápida · Calentar 2 min antes de cenar.',
+    tags: ['Pro-sueño profundo', 'Baja carga glucémica', 'Magnesio natural'],
+  },
+  {
+    id: 'cen_salmon_espinaca',
+    slot: 'cena',
+    name: 'Salmón al Limón con Calabacín Salteado y Alcachofa',
+    subtitle: 'Regeneración celular nocturna con grasas esenciales',
+    timeLabel: '20:30',
+    calories: 585,
+    protein: 44,
+    carbs: 28,
+    fats: 32,
+    prepMinutes: 11,
+    prepMethod: 'Papillote / Sartén tapada',
+    imageUrl: IMG_SALMON,
+    ingredients: [
+      '170 g de salmón fresco con eneldo y ralladura cítrica',
+      '140 g de calabacín italiano en medias lunas',
+      '70 g de corazones de alcachofa asados',
+      '1 cda de aceite de oliva extra virgen',
+    ],
+    quickSteps: [
+      'Cocina el salmón tapado con unas gotas de limón por 6 minutos a fuego medio.',
+      'Saltea el calabacín y alcachofa por 4 minutos sin sobrecocer para mantener textura.',
+      'Sirve inmediatamente con eneldo fresco.',
+    ],
+    proLogisticsNote: 'Empaque hermético libre de BPA · Ideal consumir al menos 2 h antes de dormir.',
+    tags: ['Sin carbohidratos pesados', 'Salud cardiovascular', 'Digestión 90 min'],
+  },
+  {
+    id: 'cen_pavo_hongos',
+    slot: 'cena',
+    name: 'Medallones de Pavo Orgánico, Portobello y Puré de Camote',
+    subtitle: 'Triptófano natural para descanso reparador',
+    timeLabel: '20:30',
+    calories: 545,
+    protein: 45,
+    carbs: 42,
+    fats: 20,
+    prepMinutes: 9,
+    prepMethod: 'Sartén sellado rápido',
+    imageUrl: IMG_CHICKEN,
+    ingredients: [
+      '175 g de lomo de pavo en medallones',
+      '120 g de hongo portobello laminado con ajo confitado',
+      '110 g de puré rústico de camote amarillo',
+    ],
+    quickSteps: [
+      'Sella los medallones de pavo 3.5 min por lado con sal de mar y tomillo.',
+      'En la misma sartén saltea el portobello laminado por 3 minutos.',
+      'Sirve sobre una base tibia de puré de camote.',
+    ],
+    proLogisticsNote: 'Porción calibrada para cena ejecutiva · Calentar 90 seg.',
+    tags: ['Rico en triptófano', 'Bajo en grasas saturadas', '9 minutos'],
+  },
+];
+
+const WEEK_DAYS = [
+  { dayIndex: 0, dayShort: 'Lun', dayName: 'Lunes', dateLabel: '23 Nov' },
+  { dayIndex: 1, dayShort: 'Mar', dayName: 'Martes', dateLabel: '24 Nov' },
+  { dayIndex: 2, dayShort: 'Mié', dayName: 'Miércoles', dateLabel: '25 Nov' },
+  { dayIndex: 3, dayShort: 'Jue', dayName: 'Jueves', dateLabel: '26 Nov' },
+  { dayIndex: 4, dayShort: 'Vie', dayName: 'Viernes', dateLabel: '27 Nov' },
+  { dayIndex: 5, dayShort: 'Sáb', dayName: 'Sábado', dateLabel: '28 Nov' },
+  { dayIndex: 6, dayShort: 'Dom', dayName: 'Domingo', dateLabel: '29 Nov' },
+];
+
+const BREAKFAST_ROTATION = ['des_chia_cacao', 'des_huevos_espinaca', 'des_matcha_avena'];
+const LUNCH_ROTATION = ['com_salmon_quinoa', 'com_pollo_esparragos', 'com_atun_edamame'];
+const DINNER_ROTATION = ['cen_pollo_calabaza', 'cen_salmon_espinaca', 'cen_pavo_hongos'];
+
+export const INITIAL_WEEK_PLAN: MealPlanDay[] = WEEK_DAYS.map((day, i) => ({
+  ...day,
+  meals: {
+    desayuno: { mealId: BREAKFAST_ROTATION[i % BREAKFAST_ROTATION.length], completed: i === 0 },
+    comida: { mealId: LUNCH_ROTATION[i % LUNCH_ROTATION.length], completed: false },
+    cena: { mealId: DINNER_ROTATION[i % DINNER_ROTATION.length], completed: false },
+  },
+}));
+
+export const INITIAL_CHECKINS: DailyCheckIn[] = [
+  {
+    id: 'chk_01',
+    dateISO: '2026-11-20',
+    dateLabel: 'Hoy · 20 Nov',
+    hunger: 4,
+    energy: 6,
+    mentalClarity: 7,
+    markers: {
+      digestion: 'Ligera',
+      vitality: 'Caída matutina',
+      skin: 'Clara',
+      inflammation: 'Leve abdominal',
+    },
+    notes: 'Junta de consejo a las 09:00 con café en ayunas; ligera pesadez tras snack de oficina ayer.',
+  },
+  {
+    id: 'chk_02',
+    dateISO: '2026-11-19',
+    dateLabel: 'Ayer · 19 Nov',
+    hunger: 5,
+    energy: 7,
+    mentalClarity: 8,
+    markers: {
+      digestion: 'Ligera',
+      vitality: 'Estable',
+      skin: 'Clara',
+      inflammation: 'Nula',
+    },
+    notes: 'Dormí 7.2 h; excelente enfoque en bloque de la tarde después del salmón.',
+  },
+  {
+    id: 'chk_03',
+    dateISO: '2026-11-18',
+    dateLabel: '18 Nov',
+    hunger: 6,
+    energy: 5,
+    mentalClarity: 6,
+    markers: {
+      digestion: 'Pesadez leve',
+      vitality: 'Caída 16:00 h',
+      skin: 'Deshidratada',
+      inflammation: 'Leve abdominal',
+    },
+    notes: 'Vuelo matutino MTY-MEX, baja hidratación durante la mañana.',
+  },
+];
+
+export const INITIAL_CHAT: ChatMessage[] = [
+  {
+    id: 'msg_1',
+    sender: 'nutritionist',
+    authorName: 'Dra. Valeria Mendoza',
+    timestamp: '09:14',
+    text: 'Buen día, Alejandro. Revisé tus check-ins de los últimos 3 días: notamos ligera caída de energía matutina cuando tomas café solo antes de la junta de las 09:00. Mantengamos tu Bowl de Chía y Cacao antes de las 08:30 para estabilizar cortisol y glucosa.',
+  },
+  {
+    id: 'msg_2',
+    sender: 'user',
+    authorName: 'Alejandro Domínguez',
+    timestamp: '09:40',
+    text: 'Perfecto Valeria. Hoy me siento con inflamación abdominal muy leve y tengo cena de trabajo mañana, ¿ajustamos la porción del mediodía?',
+  },
+  {
+    id: 'msg_3',
+    sender: 'nutritionist',
+    authorName: 'Dra. Valeria Mendoza',
+    timestamp: '09:46',
+    text: 'Sí, te sugiero mantener hoy el Salmón con bimi y dejar la cena ligera en proteínas magras para desinflamar antes de mañana. Si necesitas que ajustemos tus macros para el viernes, presiona "Generar Diagnóstico IA" y reviso el delta.',
+  },
+];
